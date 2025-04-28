@@ -1,3 +1,4 @@
+// Entry point — connects your App component to the HTML page (public/index.html)
 // No need to touch this file
 import React from 'react';
 import ReactDOM from 'react-dom/client';
