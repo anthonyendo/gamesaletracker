@@ -1,43 +1,115 @@
 /*Styles for the game grid layout, search bar, sorting dropdown, and Game Cards on the Home Page*/
 .container {
-    padding: 1rem;
-  }
-  
-  .sort-container {
-    margin-bottom: 1rem;
-  }
+  padding: 1rem;
+}
 
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+h1 {
+  text-align: center;
+}
+
+.sort {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  color: #333;
+
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
   
-  .list-item {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 1rem;
-    background-color: #f9f9f9;
-  }
+.list-item {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
   
-  .image {
-    width: 120px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-right: 1rem;
-  }
+.image {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
   
-  .details {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .thumbnail-link,
-  .title-link {
-    text-decoration: none;
-    color: inherit;
-  }
-  
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.page-button {
+  background-color: #020488;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.page-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.page-number {
+  font-size: 18px;
+  font-weight: bold;
+
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-text {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.search-button {
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: #020488;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.query-controls {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  gap: 100px;
+}
