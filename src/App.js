@@ -2,7 +2,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import GameDetails from './pages/GameDetailPage';
+// import GameDetails from './pages/GameDetailPage';
 import { Link } from 'react-router-dom'
 
 function Navbar() {
@@ -19,7 +19,7 @@ function App() {
           <Navbar/>
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/game/:id" element={<GameDetails/>} />
+                {/* <Route path="/game/:id" element={<GameDetails/>} /> */}
             </Routes>
         </Router>
     )
