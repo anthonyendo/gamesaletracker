@@ -1,1 +1,35 @@
 /* Global app styles (things that apply to the whole app layout)*/
+.all {
+    background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/18f8123e-b0de-4ea0-add1-845db168b004/dg2y1kn-acc2f37a-b78b-4706-8bbc-c20b8b50d04c.jpg/v1/fill/w_1280,h_721,q_75,strp/gta_vice_city_wallpaper_with_8k_and_ultra_hd_by_coder980_dg2y1kn-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIxIiwicGF0aCI6IlwvZlwvMThmODEyM2UtYjBkZS00ZWEwLWFkZDEtODQ1ZGIxNjhiMDA0XC9kZzJ5MWtuLWFjYzJmMzdhLWI3OGItNDcwNi04YmJjLWMyMGI4YjUwZDA0Yy5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.PHyl7d9qEzHQtPkiKGcKFeIlFTc1P4myTyArB9jJAkc);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+nav {
+    padding-top: 2rem;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(192, 99, 99);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    background-color: rgb(122, 0, 126);
+}
+
+nav a:active {
+    background-color: rgb(61, 0, 63);    
+}
