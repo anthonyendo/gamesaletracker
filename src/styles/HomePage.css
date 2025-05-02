@@ -1,4 +1,9 @@
 /*Styles for the game grid layout, search bar, sorting dropdown, and Game Cards on the Home Page*/
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
 .container {
   padding: 1rem;
 }
@@ -7,68 +12,160 @@ h1 {
   text-align: center;
 }
 
-.sort {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
-  color: #333;
+.content-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  max-height: fit-content;
 
 }
 
 .sort-container {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  background-color: rgb(192, 99, 99);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  font-family: sans-serif;
 }
 
+.sort-by {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.sort-button {
+  background: none;
+  border: none;
+  padding: 1rem 1rem;
+  text-align: left;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #333;
+}
+
+.sort-button:hover {
+  background-color: rgb(99, 173, 192);
+}
+
+.sort-button:active {
+  background-color: rgb(184, 6, 160);
+}
+
+.sort-button.active {
+  background-color: rgb(0, 81, 255);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Individual Game Box */
+
 .list {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
   
 .list-item {
-  max-width: 100%;
+  background: linear-gradient(to bottom, rgb(184, 55, 184) 0%, rgb(158, 93, 93) 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 1rem;
-  background-color: #f9f9f9;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+
 }
-  
+
+.img-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .image {
-  width: 120px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 1rem;
+  width: 100%;
+  height: 200px;
+  display: block;
 }
   
 .details {
+  padding: 1rem;
+  font-family: sans-serif;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
+
+.title-link {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: #000000;
+  text-decoration: none;
+}
+
+.details p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.details p > span,
+.details p > div {
+  display: block;
+}
+
+.details .original-price {
+  text-decoration: line-through;
+  color: #000000;
+}
+
+.details .sale-price {
+  font-weight: bold;
+  color: rgb(133, 0, 0);
+}
+
+.details .savings {
+  font-weight: bold;
+  color: rgb(28, 85, 28);
+}
+
+/* Page Buttons */
 
 .button-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
+  padding-bottom: 1rem;
   gap: 10px;
 }
 
 .page-button {
-  background-color: #020488;
+  background-color: rgb(192, 99, 99);
   color: white;
   border: none;
   padding: 10px 16px;
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.page-button:hover {
+  background-color: rgb(122, 0, 126);
+}
+
+.page-button:active {
+  background-color: rgb(61, 0, 63);
 }
 
 .page-button:disabled {
@@ -81,6 +178,8 @@ h1 {
   font-weight: bold;
 
 }
+
+/* Search Bar */
 
 .search-bar {
   display: flex;
@@ -98,11 +197,19 @@ h1 {
 .search-button {
   padding: 8px 12px;
   font-size: 16px;
-  background-color: #020488;
+  background-color: rgb(231, 145, 33);
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: rgb(161, 101, 22);
+}
+
+.search-button:active {
+  background-color: rgb(100, 63, 15);
 }
 
 .query-controls {
