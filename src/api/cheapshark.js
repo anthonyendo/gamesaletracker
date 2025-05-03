@@ -11,6 +11,8 @@ export const fetchDeals = async(sortBy = 'dealRating', pageNumber = 0, pageSize 
     }
 };
 
+// Fetch detailed information for a specific game deal using its dealID.
+// Returns game data including prices, ratings, store ID, etc.
 export const fetchDealById = async (dealID) => {
     try {
         const response = await fetch(`https://www.cheapshark.com/api/1.0/deals?id=${encodeURIComponent(dealID)}`);
@@ -20,6 +22,8 @@ export const fetchDealById = async (dealID) => {
     }
 };
 
+// Fetch a list of all supported game stores from CheapShark API.
+// Returns store names, logos, and IDs used to map deals to store names.
 export const fetchStores = async () => {
     try {
       const response = await fetch("https://www.cheapshark.com/api/1.0/stores");
