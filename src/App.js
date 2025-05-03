@@ -17,12 +17,11 @@ function Navbar() {
 function App() {
     return (
       <div className='all'>
-        <Router>
+        <Router basename="/gamesaletracker">
             <Navbar/>
               <Routes>
                   <Route path="/" element={<HomePage />} />
-                  {<Route path="/deals/:dealID" element={<GameDetailPage />} />
-                }
+                  <Route path="/deals/:dealID" element={<GameDetailPage />} />
               </Routes>
           </Router>
       </div>
