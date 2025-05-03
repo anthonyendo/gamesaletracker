@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/gamesaletracker/static/css/main.a7208dbf.css",
+    "main.js": "/gamesaletracker/static/js/main.330b84e1.js",
+    "static/media/wallpaper.jpg": "/gamesaletracker/static/media/wallpaper.f8b355ed14a7acf38ca9.jpg",
+    "index.html": "/gamesaletracker/index.html",
+    "main.a7208dbf.css.map": "/gamesaletracker/static/css/main.a7208dbf.css.map",
+    "main.330b84e1.js.map": "/gamesaletracker/static/js/main.330b84e1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a7208dbf.css",
+    "static/js/main.330b84e1.js"
+  ]
+}
