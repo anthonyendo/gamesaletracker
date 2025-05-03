@@ -1,1 +1,0 @@
-// Displays a single game's thumbnail, title, price — used in game listings

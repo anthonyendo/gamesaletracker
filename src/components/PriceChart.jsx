@@ -1,1 +1,0 @@
-// Shows a line graph of the game's price history over time

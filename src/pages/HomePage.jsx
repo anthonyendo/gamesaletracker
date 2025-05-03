@@ -16,7 +16,7 @@ function HomePage() {
     useEffect(() => {
         const loadDeals = async () => {
             try {
-                const data = await fetchDeals(sort, pageNum, 21, searchQuery);
+                const data = await fetchDeals(sort, pageNum, 12, searchQuery);
                 setDeals(data)
             } catch (error) {
                 console.error('Error fetching deals:', error)
@@ -79,15 +79,15 @@ function HomePage() {
                 <div className="list">
                     {deals.map(deals => (
                     <div key={deals.dealID} className="list-item">
-                        <Link to={`/deals/${deals.cheapestDealID}`} className="img-link">
+                        <Link to={`/deals/${deals.dealID}`} className="img-link">
                             <img src={deals.thumb} alt={deals.external} className="image" />
-                        <h3>{deals.external}</h3>
+                            <h3>{deals.external}</h3>
                         </Link>
                         <div className='details'>
+                            <Link to={`/deals/${deals.dealID}`} className='title-link'>
+                                <h3>{deals.title}</h3>
+                            </Link>
                             <p>
-                                <Link to={`/deals/${deals.cheapestDealID}`} className='title-link'>
-                                    <h3>{deals.title}</h3>
-                                </Link>
                                 <span className='original-price'>Original Price: ${deals.normalPrice}</span>
                                 <span className='sale-price'>Discounted Price: ${deals.salePrice}</span>
                                 <span className='savings'>-{parseFloat(deals.savings).toFixed(1)}%</span>

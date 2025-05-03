@@ -1,1 +1,65 @@
 /* Styles for the layout, image size, title font, buttons on the Game Detail Page*/
+h2 {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+.detail-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  .detail-image {
+    width: 300px;
+    height: auto;
+  }
+  
+  .detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-family: sans-serif;
+    font-size: 18px;
+  }
+  .external-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #0077cc;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .external-link:hover {
+    text-decoration: underline;
+    color: #004488;
+  }
+  
+  
+.back-button {
+    background-color: rgb(192, 99, 99);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+  }
+  
+  .back-button:hover {
+    background-color: rgb(122, 0, 126);
+  }
+  
+  .back-button:active {
+    background-color: rgb(61, 0, 63);
+  }
+  

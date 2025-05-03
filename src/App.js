@@ -2,7 +2,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-// import GameDetails from './pages/GameDetailPage';
+import GameDetailPage from './pages/GameDetailPage';
 import { Link } from 'react-router-dom'
 import { FaHome } from 'react-icons/fa';
 
@@ -21,7 +21,8 @@ function App() {
             <Navbar/>
               <Routes>
                   <Route path="/" element={<HomePage />} />
-                  {/* <Route path="/game/:id" element={<GameDetails/>} /> */}
+                  {<Route path="/deals/:dealID" element={<GameDetailPage />} />
+                }
               </Routes>
           </Router>
       </div>

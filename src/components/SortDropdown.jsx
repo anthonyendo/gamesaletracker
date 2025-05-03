@@ -1,1 +1,0 @@
-// Dropdown menu to sort games by price, discount, or rating
