@@ -68,7 +68,7 @@ function HomePage() {
       
     return (
         <div>
-            <h1>Game Deals</h1>
+            <h1>Deal Finder</h1>
             {/* Game Query Container */}
             <div className='query-controls'>
                 {/* Search Bar */}
