@@ -63,3 +63,21 @@ h2 {
     background-color: rgb(61, 0, 63);
   }
   
+  .store-link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .store-link:hover {
+    text-decoration: underline;
+  }
+  
+  .store-logo {
+    width: 24px;
+    height: auto;
+    margin-right: 8px;
+  }
+  

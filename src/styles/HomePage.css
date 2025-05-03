@@ -139,6 +139,14 @@ h1 {
   color: rgb(28, 85, 28);
 }
 
+.store-logo-inline {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+
 /* Page Buttons */
 
 .button-container {
@@ -220,3 +228,4 @@ h1 {
   margin: 10px 0;
   gap: 100px;
 }
+

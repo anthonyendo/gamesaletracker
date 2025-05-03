@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchDealById } from '../api/cheapshark';
+import { fetchDealById, fetchStores } from '../api/cheapshark';
 import {
   LineChart,
   Line,
@@ -16,38 +16,55 @@ import '../styles/GameDetailPage.css';
 
 function GameDetailPage() {
     const { dealID } = useParams();
-    console.log("DEBUG: dealID =", dealID);
     const [game, setGame] = useState(null);
     const [priceData, setPriceData] = useState([]);
     const navigate = useNavigate();
+    const [stores, setStores] = useState([]);
+    const getStoreName = (storeID) => {
+      const store = stores.find((s) => s.storeID === storeID);
+      return store ? store.storeName : "Unknown Store";
+    };
+    
+    const getStoreLogo = (storeID) => {
+      const store = stores.find((s) => s.storeID === storeID);
+      return store ? `https://www.cheapshark.com${store.images.logo}` : '';
+    };
+    
+
 
     useEffect(() => {
         const loadGame = async () => {
           try {
             const data = await fetchDealById(dealID);
-            console.log("DEBUG: Game data returned:", data);
+            console.log("DEBUG full game object:", data);
             setGame(data);
             // Generate mock historical data
-            const mockHistory = [
-              {
-                date: new Date((data.cheapestPrice.date - 604800) * 1000).toLocaleDateString(), // one week before
-                price: parseFloat(data.gameInfo.retailPrice),
-              },
-              {
-                date: new Date(data.cheapestPrice.date * 1000).toLocaleDateString(),
-                price: parseFloat(data.cheapestPrice.price),
-              },
-              {
-                date: new Date().toLocaleDateString(),
-                price: parseFloat(data.gameInfo.salePrice),
-              },
-            ];
+            // Generate mock historical data for the past 12 months
+            const mockHistory = Array.from({ length: 12 }, (_, i) => {
+              const date = new Date();
+              date.setMonth(date.getMonth() - (11 - i)); // Go back in time by months
+
+              const fluctuation = Math.random() * 5 - 2.5; // ±2.5 price change
+              const basePrice = parseFloat(data.gameInfo.salePrice || data.gameInfo.retailPrice);
+              const price = Math.max(0.5, basePrice + fluctuation); // Keep price above 0.5
+
+              return {
+                date: date.toLocaleDateString('default', { month: 'short', year: 'numeric' }),
+                price: parseFloat(price.toFixed(2)),
+              };
+            });
             setPriceData(mockHistory);
           } catch (error) {
             console.error("Error loading game data:", error);
           }
         };
         loadGame();
+        const loadStores = async () => {
+          const storeList = await fetchStores();
+          setStores(storeList);
+        };
+        loadStores();
+      
       }, [dealID]);
 
       if (!game || Object.keys(game).length === 0 || !game.gameInfo) {
@@ -57,7 +74,7 @@ function GameDetailPage() {
             <button onClick={() => navigate(-1)}>← Go Back</button>
           </div>
         );
-      }           
+      }              
 
     return (
       <div className="game-detail">
@@ -68,6 +85,15 @@ function GameDetailPage() {
             <h1>{game.gameInfo.name}</h1>
             <p>Retail Price: ${game.gameInfo.retailPrice}</p>
             <p>Sale Price: ${game.gameInfo.salePrice}</p>
+            <a
+              href={`https://www.cheapshark.com/redirect?dealID=${dealID}`}
+              target="_blank"
+              rel="noreferrer"
+              className="external-link"
+            >
+              Buy Now from {getStoreName(game.gameInfo.storeID)}
+            </a>
+
             <p>Steam Rating:{" "} {game.gameInfo.steamRatingText ?? "Not available"}{" "} 
                 ({game.gameInfo.steamRatingPercent ?? "0"}%)
             </p>
@@ -77,27 +103,6 @@ function GameDetailPage() {
             <p>Release Date:{" "} {game.gameInfo.releaseDate
                 ? new Date(game.gameInfo.releaseDate * 1000).toLocaleDateString() : "N/A"}
             </p>
-            {game.gameInfo.steamAppID && (
-              <a
-                href={`https://store.steampowered.com/app/${game.gameInfo.steamAppID}`}
-                target="_blank"
-                rel="noreferrer"
-                className="external-link"
-              >
-                🔗 View on Steam
-              </a>
-            )}
-
-            {game.gameInfo.metacriticLink && (
-              <a
-                href={`https://www.metacritic.com${game.gameInfo.metacriticLink}`}
-                target="_blank"
-                rel="noreferrer"
-                className="external-link"
-              >
-                🔗 View on Metacritic
-              </a>
-            )}
 
             <h2>Price History</h2>
             <ResponsiveContainer width="100%" height={250}>

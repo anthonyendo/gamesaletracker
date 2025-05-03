@@ -19,3 +19,14 @@ export const fetchDealById = async (dealID) => {
         console.error("Error fetching deal by ID:", error);
     }
 };
+
+export const fetchStores = async () => {
+    try {
+      const response = await fetch("https://www.cheapshark.com/api/1.0/stores");
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching stores:", error);
+      return [];
+    }
+};
+  

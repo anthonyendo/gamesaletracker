@@ -3,7 +3,7 @@ import '../styles/HomePage.css';
 import '../App.css';
 import {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import {fetchDeals} from '../api/cheapshark';
+import {fetchDeals, fetchStores} from '../api/cheapshark';
 
 function HomePage() {
     const [deals, setDeals] = useState([]);
@@ -11,7 +11,12 @@ function HomePage() {
     const [pageNum, setPageNum] = useState(0);
     const [search, setSearch] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
-
+    const [stores, setStores] = useState([]);
+    const getStoreName = (storeID) => {
+        const store = stores.find((s) => s.storeID === storeID);
+        return store ? store.storeName : "Unknown Store";
+      };
+      
     // Fetch deals with async/wait fetch
     useEffect(() => {
         const loadDeals = async () => {
@@ -24,6 +29,13 @@ function HomePage() {
         };
 
         loadDeals();
+
+        const loadStores = async () => {
+            const storeList = await fetchStores();
+            setStores(storeList);
+          };
+        loadStores();
+          
     }, [sort, pageNum, searchQuery]);
 
     // Handle Change Functions
@@ -48,7 +60,12 @@ function HomePage() {
         setSearchQuery(search);
         setPageNum(0);
     }
-
+    
+    const getStoreLogo = (storeID) => {
+        const store = stores.find((s) => s.storeID === storeID);
+        return store ? `https://www.cheapshark.com${store.images.logo}` : '';
+      };
+      
     return (
         <div>
             <h1>Game Deals</h1>
@@ -77,22 +94,35 @@ function HomePage() {
                 </div>
                 {/* Game Display */}
                 <div className="list">
-                    {deals.map(deals => (
-                    <div key={deals.dealID} className="list-item">
-                        <Link to={`/deals/${deals.dealID}`} className="img-link">
-                            <img src={deals.thumb} alt={deals.external} className="image" />
-                            <h3>{deals.external}</h3>
+                    {deals.map(deal => (
+                    <div key={deal.dealID} className="list-item">
+                        <Link to={`/deals/${deal.dealID}`} className="img-link">
+                            
+                            <img src={deal.thumb} alt={deal.external} className="image" />
+                            <h3>{deal.external}</h3>
                         </Link>
+
                         <div className='details'>
-                            <Link to={`/deals/${deals.dealID}`} className='title-link'>
-                                <h3>{deals.title}</h3>
+                            <Link to={`/deals/${deal.dealID}`} className='title-link'>
+                                <h3>{deal.title}</h3>
                             </Link>
                             <p>
-                                <span className='original-price'>Original Price: ${deals.normalPrice}</span>
-                                <span className='sale-price'>Discounted Price: ${deals.salePrice}</span>
-                                <span className='savings'>-{parseFloat(deals.savings).toFixed(1)}%</span>
-                                <span className='deal-rating'>Deal Rating: {deals.dealRating}</span>
+                                <span className='original-price'>Original Price: ${deal.normalPrice}</span>
+                                <span className='sale-price'>Discounted Price: ${deal.salePrice}</span>
+                                <span className='savings'>-{parseFloat(deal.savings).toFixed(1)}%</span>
+                                <span className='deal-rating'>Deal Rating: {deal.dealRating}</span>
                             </p>
+                            <p className="store-name">
+                                <img
+                                    src={getStoreLogo(deal.storeID)}
+                                    alt={getStoreName(deal.storeID)}
+                                    className="store-logo-inline"
+                                />
+                                Store:{" "}
+                                
+                                {getStoreName(deal.storeID)}
+                            </p>
+
                         </div>
                     </div>
                     ))}
